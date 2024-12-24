@@ -22,8 +22,8 @@ const projects = [
       title: "TechTrends 2025",
       description:
         "A React app that showcases the latest technology trends to watch in 2024, with an interactive list where users can click on each trend to view detailed information. This project uses React, the useState hook, JSX for rendering components, and CSS for styling.",
-      projectLink: "",
-      codeLink: "",
+      projectLink: "https://8tdvwl.csb.app/",
+      codeLink: "https://codesandbox.io/p/sandbox/techtrends-2025-8tdvwl?file=%2Fpublic%2Fstyles.css%3A9%2C15",
     },
   ];
   
