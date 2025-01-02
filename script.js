@@ -31,8 +31,16 @@ const projects = [
     title: "To-do List App",
     description:
       "A simple React app that allows users to add, view, and delete tasks from their to-do list. The app includes the ability to mark tasks with a checkbox and shows the date when each task was added. This project is built using React, useState hook, and CSS for styling.",
-    projectLink: "https://kaniz-naqvi.github.io/To-do-App/",
-    codeLink: "https://github.com/kaniz-naqvi/To-do-App",
+    projectLink: "https://z5lf4f.csb.app/",
+    codeLink: "https://codesandbox.io/p/sandbox/confident-hugle-z5lf4f",
+  },
+  {
+    day: 5,
+    title: "MovieLand",
+    description:
+      "A static React app that allows users to search movies with there name, and show the lists of  movies related to the search. This project is built using React, OMDB API, useState and useEffect hook, and CSS for styling.",
+    projectLink: "https://c3snnt.csb.app/",
+    codeLink: "https://codesandbox.io/p/sandbox/c3snnt",
   },
 ];
 
