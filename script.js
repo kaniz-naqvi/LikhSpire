@@ -36,6 +36,14 @@ const projects = [
   },
   {
     day: 5,
+    title: "Keeper App",
+    description:
+      "A static React app that allows users to search movies with there name, and show the lists of  movies related to the search. This project is built using React, OMDB API, useState and useEffect hook, and CSS for styling.",
+    projectLink: "https://rwphd3.csb.app/",
+    codeLink: "https://codesandbox.io/p/sandbox/keeper-app-rwphd3",
+  },
+  {
+    day: 6,
     title: "MovieLand",
     description:
       "A static React app that allows users to search movies with there name, and show the lists of  movies related to the search. This project is built using React, OMDB API, useState and useEffect hook, and CSS for styling.",
