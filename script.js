@@ -38,7 +38,7 @@ const projects = [
     day: 5,
     title: "Keeper App",
     description:
-      "A static React app that allows users to search movies with there name, and show the lists of  movies related to the search. This project is built using React, OMDB API, useState and useEffect hook, and CSS for styling.",
+      "A simple note-taking app inspired by Google Keep, built to practice the useState Hook and explore state management in React. Features include adding and deleting notes with a clean, user-friendly interface. Implemented Material-UI (MUI) for enhanced design.",
     projectLink: "https://rwphd3.csb.app/",
     codeLink: "https://codesandbox.io/p/sandbox/keeper-app-rwphd3",
   },
