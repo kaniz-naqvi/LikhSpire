@@ -50,6 +50,14 @@ const projects = [
     projectLink: "https://c3snnt.csb.app/",
     codeLink: "https://codesandbox.io/p/sandbox/c3snnt",
   },
+  {
+    day: 7,
+    title: "Contact Manager",
+    description:
+      "Built a Contact Manager with React Router, learning navigation, state management, Local Storage, and Bootstrap for responsive design. ",
+    projectLink: "",
+    codeLink: "",
+  },
 ];
 
 const projectsContainer = document.getElementById("projects");
