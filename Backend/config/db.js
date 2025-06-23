@@ -1,4 +1,4 @@
-import Client from "pg";
+import { Client } from "pg";
 const db = new Client({
   user: "postgres",
   password: "Syeda@313",
