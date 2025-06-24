@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import db from "./config/db.js";
 import useBlogs from "./routes/useBlogs.js";
 
@@ -7,6 +8,7 @@ const app = express();
 db.connect();
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 app.use("/api", useBlogs);
 const port = 3000;
 
