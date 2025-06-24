@@ -28,12 +28,12 @@
     <!-- Navbar -->
     <nav class="navbar navbar-dark border-bottom shadow-sm">
       <div class="container d-flex justify-content-between align-items-center">
-        <a class="navbar-brand fw-bold" href="/"
+        <a class="navbar-brand fw-bold" href="../index.html"
           ><img src="../assets/hero.png" width="40px" alt="logo" /><strong
             >LikhSpire</strong
           ></a
         >
-        <a href="/blogs-list" class="btn btn-primary fw-bold"
+        <a href="./blogList.html" class="btn btn-primary fw-bold"
           ><i class="bi bi-journal-text"></i> Blog List</a
         >
       </div>
@@ -107,23 +107,71 @@
     const title = document.getElementById("title");
     const publishBtn = document.querySelector(".publish");
     const blogIdInput = document.getElementById("blogId");
+    const base_URL = "http://localhost:3000/api";
     window.onload = async function () {
       const urlParams = new URLSearchParams(window.location.search);
       const blogId = urlParams.get("id");
-      let response = await fetch("/api/blogs");
-      let blogs = await response.json();
-      currBlog = blogs.find((b) => b.id === Number(blogId));
-      if (currBlog) {
-        showConcent(currBlog);
+
+      if (blogId) {
+        try {
+          const response = await fetch(`${base_URL}/${blogId}`);
+          const blog = await response.json();
+          showContent(blog);
+        } catch (err) {
+          alert("Blog not found.");
+        }
       }
     };
-    function showConcent(blog) {
-      text.value = blog.content;
+
+    // Fill form for edit
+    function showContent(blog) {
+      text.value = blog.body;
       title.value = blog.title;
       blogIdInput.value = blog.id;
       publishBtn.innerHTML = "Save Changes";
       publishBtn.classList.remove("btn-primary");
       publishBtn.classList.add("btn-success");
     }
+    document
+      .querySelector("form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const blogData = {
+          title: title.value.trim(),
+          body: text.value.trim(),
+        };
+
+        const blogId = blogIdInput.value;
+
+        try {
+          let response;
+          if (blogId) {
+            // PATCH update
+            response = await fetch(`${base_URL}/update/${blogId}`, {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(blogData),
+            });
+          } else {
+            // POST create
+            response = await fetch(`${base_URL}/add-blog`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(blogData),
+            });
+          }
+
+          if (response.ok) {
+            window.location.href = "./blogList.html";
+          } else {
+            const result = await response.json();
+            alert(result.message || "Failed to save blog.");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Something went wrong.");
+        }
+      });
   </script>
 </html>

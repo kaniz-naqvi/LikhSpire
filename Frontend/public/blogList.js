@@ -1,72 +1,85 @@
 const main = document.querySelector(".blog-list");
+const base_URL = "http://localhost:3000/api";
 
+//  GET all blogs
 async function getBlogsData() {
-  let response = await fetch("/api/blogs");
-  let blogs = await response.json();
-  console.log(blogs);
-  if (blogs.length < 1) {
-    main.innerHTML = `<p class="text-secondary m-auto">Nothing here, <a href="/create">Add blogs</a> to see the list!</p>`;
-  } else {
+  try {
+    const response = await fetch(base_URL);
+    const blogs = await response.json();
+
+    if (!blogs.length) {
+      main.innerHTML = `<p class="text-secondary m-auto">Nothing here, <a href="/create">Add blogs</a> to see the list!</p>`;
+      return;
+    }
+
     let mainHTML = "";
     blogs.forEach((b) => {
       mainHTML += `
-         <div data-id=${b.id} data-title="${b.title}" class="flex blogs-item border-top pt-3 mx-lg-5 px-3 px-lg-5">
+        <div data-id="${b.id}" data-title="${b.title}" class="flex blogs-item border-top pt-3 mx-lg-5 px-3 px-lg-5">
           <div class="d-flex justify-content-between align-items-center">
             <h4 class="fw-bold py-0">${b.title}</h4>
             <button class="btn m-1 delete-btn btn-danger fw-bold">
               <i class="bi-trash3"></i>
             </button>
           </div>
-          <p class="pt-0 p">${b.content}</p>
+          <p class="pt-0 p">${b.body}</p>
         </div>
-        `;
+      `;
     });
+
     main.innerHTML = mainHTML;
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    main.innerHTML = `<p class="text-danger">Failed to load blogs.</p>`;
   }
 }
 
-getBlogsData();
+//  DELETE blog
+async function deleteBlog(id) {
+  try {
+    const response = await fetch(`${base_URL}/delete-blog/${id}`, {
+      method: "DELETE",
+    });
 
-// Event listener for the main container
+    if (response.ok) {
+      getBlogsData(); // Refresh
+    } else {
+      alert("Failed to delete blog.");
+    }
+  } catch (error) {
+    console.error("Delete error:", error);
+    alert("Something went wrong.");
+  }
+}
+
+//  Redirect to detail
+function showDetail(id) {
+  window.location.href = `./blogDetail.html?id=${id}`;
+}
+
+//  Event delegation
 main.addEventListener("click", (e) => {
-  // Handle delete button click
   const deleteBtn = e.target.closest(".delete-btn");
-  if (deleteBtn) {
-    // Stop propagation to prevent triggering the .blogs-item handler
-    e.stopPropagation();
+  const blogItem = e.target.closest(".blogs-item");
 
-    // Get the parent blog item and extract its ID and title
+  if (deleteBtn) {
+    e.stopPropagation();
     const parentDiv = deleteBtn.closest(".blogs-item");
     const deleteId = parentDiv.dataset.id;
-    const deleteName = parentDiv.dataset.title;
+    const deleteTitle = parentDiv.dataset.title;
 
-    // Confirm deletion with the user
-    let confirmation = window.confirm(`Do you want to delete "${deleteName}"?`);
-    if (confirmation) {
+    const confirmed = window.confirm(`Do you want to delete "${deleteTitle}"?`);
+    if (confirmed) {
       deleteBlog(deleteId);
     }
-    return; // Exit early to avoid running the .blogs-item handler
+    return;
   }
 
-  // Handle blog item click (show details)
-  const blogItem = e.target.closest(".blogs-item");
   if (blogItem) {
     const blogId = blogItem.dataset.id;
     showDetail(blogId);
   }
 });
 
-async function deleteBlog(id) {
-  let response = await fetch(`/api/blogs/${id}`, {
-    method: "DELETE",
-  });
-  if (response.ok) {
-    getBlogsData(); // Refresh the blog list after deletion
-  } else {
-    alert("Failed to Delete, try again!");
-  }
-}
-
-function showDetail(id) {
-  document.location.href = `/blog?id=${id}`;
-}
+//  Start
+getBlogsData();
