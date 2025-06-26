@@ -3,7 +3,8 @@ import morgan from "morgan";
 import cors from "cors";
 import db from "./config/db.js";
 import useBlogs from "./routes/useBlogs.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 db.connect();
 app.use(express.json());
