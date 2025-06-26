@@ -7,16 +7,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-db.connect();
+
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
+
 app.use("/api", useBlogs);
-const port = 3000;
 
 app.get("/", (req, res) => {
   res.json("Success!");
 });
+
+const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
-  console.log(`server is listning on port ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });
