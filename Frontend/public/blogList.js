@@ -1,5 +1,5 @@
 const main = document.querySelector(".blog-list");
-const base_URL = "likhspire-production.up.railway.app/api";
+const base_URL = "http://localhost:3000/";
 
 //  GET all blogs
 async function getBlogsData() {
