@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-
+db.connect();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());

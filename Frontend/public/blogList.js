@@ -1,5 +1,5 @@
 const main = document.querySelector(".blog-list");
-const base_URL = "http://localhost:3000";
+const base_URL = "http://localhost:3000/api";
 
 //  GET all blogs
 async function getBlogsData() {

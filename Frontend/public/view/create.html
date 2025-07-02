@@ -107,7 +107,7 @@
     const title = document.getElementById("title");
     const publishBtn = document.querySelector(".publish");
     const blogIdInput = document.getElementById("blogId");
-    const base_URL = "http://localhost:3000";
+    const base_URL = "http://localhost:3000/api";
     window.onload = async function () {
       const urlParams = new URLSearchParams(window.location.search);
       const blogId = urlParams.get("id");
