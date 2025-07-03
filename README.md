@@ -36,25 +36,29 @@ LikhSpire is a full-stack blog website that allows users to create, read, update
 - PostgreSQL
 - SQL
 
-## 📸 UI Preview
+## UI Preview
 
-### 🏠 Home Page
+### Home Page
 
 ![Home Page](./screenshots/home.png)
 
-### 📝 Create Blog Page
+### Create Blog Page
 
 ![Create Page](./screenshots/create.png)
 
-### 📄 Blog Detail View
+### Blogs List
+
+![Detail View](./screenshots/list.png)
+
+### Blog Detail View
 
 ![Detail View](./screenshots/detail.png)
 
-## 🎞️ Live Demo (GIF Preview)
+## Live Demo (GIF Preview)
 
-> Here’s a quick walkthrough showing how a user signs in, writes a blog, and views others' posts:
+> Here’s a quick walkthrough showing how a user writes a blog, and views blog list:
 
-![LikhSpire Demo](./demo.gif)
+![LikhSpire Demo](./screenshots/demo.gif)
 
 ## Logo and Name Generation
 
