@@ -58,7 +58,7 @@ LikhSpire is a full-stack blog website that allows users to create, read, update
 
 > Here’s a quick walkthrough showing how a user writes a blog, and views blog list:
 
-[LikhSpire Demo](./screenshots/demo.gif)
+[![LikhSpire Demo](./screenshots/demo-thumbnail.png)](https://www.canva.com/design/DAGsAciQf78/I6JJ95EylyUOKpXaAqIYoA/edit?utm_content=DAGsAciQf78&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Logo and Name Generation
 
